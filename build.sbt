@@ -1,6 +1,6 @@
 name := "ktlint-sbt"
 
-organization := "com.github.karumi"
+organization := "com.karumi"
 
 version := "1.0.0"
 
