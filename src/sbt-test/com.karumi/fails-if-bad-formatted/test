@@ -1,0 +1,2 @@
+# should fails with bad formatted code
+-> ktlint source/BadFormatted.kt

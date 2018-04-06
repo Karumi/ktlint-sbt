@@ -1,0 +1,2 @@
+# should pass with well formatted code
+> ktlint source/WellFormatted.kt

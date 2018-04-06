@@ -1,0 +1,2 @@
+# should pass formatting the bad code
+> ktlint -F source/BadFormatted.kt
