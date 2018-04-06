@@ -45,7 +45,7 @@ object KtlintPlugin extends AutoPlugin {
       throw new IllegalStateException("Something went wrong")
     }
 
-    println(s"ktlint-$version downloaded here $source")
+    println(s"$source/ktlint-$version downloaded")
   }
 
   private def fileName(version: String): String = s"ktlint-$version"

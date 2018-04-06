@@ -6,3 +6,4 @@ lazy val root = (project in file("."))
   )
 
 ktlintSource := new File("lib")
+ktlintVersion := "0.17.0"
