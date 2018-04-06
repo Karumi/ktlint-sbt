@@ -1,0 +1,24 @@
+language: scala
+scala:
+- 2.12.3
+jdk:
+- oraclejdk8
+cache:
+  apt: true
+  directories:
+  - "$HOME/.ivy2/cache"
+  - "$HOME/.sbt"
+before_install:
+- export SBT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
+
+before_cache:
+- find $HOME/.ivy2 -name "ivydata-*.properties" -delete
+- find $HOME/.sbt -name "*.lock" -delete
+env:
+- LOG_APP_LEVEL=INFO
+before_script:
+- echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
+- sudo apt-get update
+- sudo apt-get install sbt
+script:
+- sbt scripted
