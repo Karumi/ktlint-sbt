@@ -1,7 +1,6 @@
 package com.karumi
 
 import com.karumi.Keys.{downloadKtlint, ktlint, ktlintSource, ktlintVersion}
-import sbt.Keys.ivyPaths
 import sbt.complete.DefaultParsers.spaceDelimited
 import sbt.{AutoPlugin, File}
 
@@ -11,8 +10,8 @@ import scala.sys.process._
 object KtlintPlugin extends AutoPlugin {
 
   override def projectSettings: scala.Seq[sbt.Setting[_]] = Seq(
-    ktlintSource := ivyPaths.value.ivyHome.get,
-    ktlintVersion := "0.21.0",
+    ktlintSource := Defaults.ivyHomeDirectory,
+    ktlintVersion := Defaults.lastKtlintVersion,
     ktlint := {
       val args = spaceDelimited("<arg>").parsed.mkString(" ")
       val ktlintFile = new File(ktlintSource.value, fileName(ktlintVersion.value))
