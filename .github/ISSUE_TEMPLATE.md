@@ -10,4 +10,4 @@
 
 ### Actual behavior
 
-*Describe the current behavior and why it is wrong*</td>
+*Describe the current behavior and why it is wrong*
