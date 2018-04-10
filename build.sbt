@@ -2,7 +2,7 @@ name := "ktlint-sbt"
 
 organization := "com.karumi"
 
-version := "1.0.0"
+version := "0.0.1"
 
 sbtPlugin := true
 

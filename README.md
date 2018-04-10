@@ -4,26 +4,26 @@ Sbt plugin wrapper over [ktlint](https://github.com/shyiko/ktlint) project.
 
 ## Add Plugin
 
-To add sbt-stats functionality to your project add the following to your `project/plugins.sbt` file:
+To add this functionality to your project add the following to your `project/plugins.sbt` file:
 
 ```scala
-  addSbtPlugin("com.karumi" % "ktlint-sbt" % "1.0.0")
+  addSbtPlugin("com.karumi" % "ktlint-sbt" % "0.0.1")
 ```
 
 ## Configuration
 
-Optionally you can specify the ktlint version and the dependency source location to your `build.sbt` file:
+Optionally, you can specify the ktlint version and the dependency source location in your `build.sbt` file:
 
 ```scala
 ktlintVersion := "0.21.0"
 ktlintSource := new File("lib")
 ``` 
 
-If you don't configure this the defaults defined in the [Defaults](https://github.com/Karumi/ktlint-sbt/blob/master/src/main/scala/com/karumi/Defaults.scala) object will be used.
+If you don't add these values yourself the plugin will use the ones defined in [Defaults](https://github.com/Karumi/ktlint-sbt/blob/master/src/main/scala/com/karumi/Defaults.scala)
 
 ## Usage
 
-ktlint is used in the same way to the official one described here: https://github.com/shyiko/ktlint#usage
+This plugin is used in the exact same way you'd use ktlint directly. If you want to know more about all the tool options you can visit [the official documentation](https://github.com/shyiko/ktlint#usage) 
 
 ```
 $ sbt
