@@ -9,6 +9,8 @@ import scala.sys.process._
 
 object KtlintPlugin extends AutoPlugin {
 
+  private val KTLINT_ERROR = 1
+
   override def projectSettings: scala.Seq[sbt.Setting[_]] = Seq(
     ktlintSource := Defaults.ivyHomeDirectory,
     ktlintVersion := Defaults.lastKtlintVersion,
@@ -23,7 +25,7 @@ object KtlintPlugin extends AutoPlugin {
 
       println(s"\n")
 
-      if (result == 1) {
+      if (result == KTLINT_ERROR) {
         throw new IllegalStateException("Filed, some issues to resolve")
       }
     },
