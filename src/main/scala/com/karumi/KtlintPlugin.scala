@@ -38,7 +38,7 @@ object KtlintPlugin extends AutoPlugin {
     println(s"Downloading ktlint-$version dependency...")
 
     val curl = s"curl -sSLO https://github.com/shyiko/ktlint/releases/download/$version/ktlint" !
-    val chmod = "chmod a+x ktlint" !
+    val chmod = "chmod u+x ktlint" !
     val createSourceFolder = s"mkdir -p $source" !
     val res = s"sudo mv ktlint $source/${fileName(version)}" !
 
