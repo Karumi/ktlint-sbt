@@ -1,6 +1,6 @@
 # ![Karumi logo](https://cloud.githubusercontent.com/assets/858090/11626547/e5a1dc66-9ce3-11e5-908d-537e07e82090.png) Ktlint sbt 
 
-Sbt plugin wrapper over [ktlint](https://github.com/shyiko/ktlint) project.
+sbt plugin wrapper over [ktlint](https://github.com/shyiko/ktlint) project.
 
 ## Add Plugin
 
