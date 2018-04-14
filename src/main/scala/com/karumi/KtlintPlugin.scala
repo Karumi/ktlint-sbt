@@ -9,7 +9,8 @@ import scala.sys.process._
 
 object KtlintPlugin extends AutoPlugin {
 
-  private val KTLINT_ERROR = 1
+  private val ERROR = 1
+  private type Command = String
 
   override def projectSettings: scala.Seq[sbt.Setting[_]] = Seq(
     ktlintSource := Defaults.ivyHomeDirectory,
@@ -21,15 +22,17 @@ object KtlintPlugin extends AutoPlugin {
         download(ktlintSource.value, ktlintVersion.value)
       }
 
-      val result: Int = s"$ktlintFile $args" !
+      val ktlintResult = s"$ktlintFile $args" !
 
       println(s"\n")
 
-      if (result == KTLINT_ERROR) {
+      if (ktlintResult == ERROR) {
         throw new IllegalStateException("Filed, some issues to resolve")
       }
     },
-    downloadKtlint := { download(ktlintSource.value, ktlintVersion.value) }
+    downloadKtlint := {
+      download(ktlintSource.value, ktlintVersion.value)
+    }
   )
 
   val autoImport: Keys.type = Keys
@@ -37,17 +40,23 @@ object KtlintPlugin extends AutoPlugin {
   private def download(source: File, version: String) {
     println(s"Downloading ktlint-$version dependency...")
 
-    val curl = s"curl -sSLO https://github.com/shyiko/ktlint/releases/download/$version/ktlint" !
-    val chmod = "chmod u+x ktlint" !
-    val createSourceFolder = s"mkdir -p $source" !
-    val res = s"sudo mv ktlint $source/${fileName(version)}" !
-
-    if (curl == 1 || chmod == 1 || res == 1) {
-      throw new IllegalStateException("Something went wrong")
-    }
+    run(
+      s"curl -sSLO https://github.com/shyiko/ktlint/releases/download/$version/ktlint",
+      "chmod u+x ktlint",
+      s"mkdir -p $source",
+      s"sudo mv ktlint $source/${fileName(version)}"
+    )
 
     println(s"$source/ktlint-$version downloaded")
   }
 
   private def fileName(version: String): String = s"ktlint-$version"
+
+  private def run(commands: Command*) {
+    commands.foreach(command => {
+      if ((command !) == ERROR) {
+        throw new IllegalStateException("Something went wrong")
+      }
+    })
+  }
 }
