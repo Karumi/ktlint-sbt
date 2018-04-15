@@ -13,7 +13,7 @@ object KtlintPlugin extends AutoPlugin {
   private type Command = String
 
   override def projectSettings: scala.Seq[sbt.Setting[_]] = Seq(
-    ktlintSource := Defaults.ivyHomeDirectory,
+    ktlintSource := Defaults.ktlintLibDirectory,
     ktlintVersion := Defaults.lastKtlintVersion,
     ktlint := {
       val args = spaceDelimited("<arg>").parsed.mkString(" ")
@@ -44,7 +44,7 @@ object KtlintPlugin extends AutoPlugin {
       s"curl -sSLO https://github.com/shyiko/ktlint/releases/download/$version/ktlint",
       "chmod u+x ktlint",
       s"mkdir -p $source",
-      s"sudo mv ktlint $source/${fileName(version)}"
+      s"mv ktlint $source/${fileName(version)}"
     )
 
     println(s"$source/ktlint-$version downloaded")
