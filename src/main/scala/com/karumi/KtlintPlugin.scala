@@ -9,7 +9,7 @@ import scala.sys.process._
 
 object KtlintPlugin extends AutoPlugin {
 
-  private val error = 1
+  private val success = 0
   private type Command = String
 
   override def projectSettings: scala.Seq[sbt.Setting[_]] = Seq(
@@ -26,7 +26,7 @@ object KtlintPlugin extends AutoPlugin {
 
       println(s"\n")
 
-      if (ktlintResult == error) {
+      if (ktlintResult != success) {
         throw new IllegalStateException("Filed, some issues to resolve")
       }
     },
@@ -54,7 +54,7 @@ object KtlintPlugin extends AutoPlugin {
 
   private def run(commands: Command*) {
     commands.foreach(command => {
-      if ((command !) == error) {
+      if ((command !) != success) {
         throw new IllegalStateException("Something went wrong")
       }
     })
