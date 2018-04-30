@@ -1,0 +1,3 @@
+# should pass when ktlint is downloaded
+> ktlint source/*.kt
+> exists-ktlint 0.17.0
