@@ -15,8 +15,8 @@ To add this functionality to your project add the following to your `project/plu
 Optionally, you can specify the ktlint version and the dependency source location in your `build.sbt` file:
 
 ```scala
-ktlintVersion := "0.21.0"
-ktlintSource := new File("lib")
+  ktlintVersion := "0.21.0"
+  ktlintSource := new File("lib")
 ``` 
 
 If you don't add these values yourself the plugin will use the ones defined in [Defaults](https://github.com/Karumi/ktlint-sbt/blob/master/src/main/scala/com/karumi/Defaults.scala)
