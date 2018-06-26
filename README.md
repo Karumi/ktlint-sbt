@@ -10,6 +10,13 @@ To add this functionality to your project add the following to your `project/plu
   addSbtPlugin("com.karumi" % "ktlint-sbt" % "0.0.1")
 ```
 
+As any other sbt plugin you have to enable the plugin in the `build.sbt` project configuration file:
+
+```scala
+lazy val `my-project` = (project in file("."))
+  .enablePlugins(KtlintPlugin)
+```
+
 ## Configuration
 
 Optionally, you can specify the ktlint version and the dependency source location in your `build.sbt` file:
