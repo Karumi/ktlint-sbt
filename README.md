@@ -34,7 +34,7 @@ $ sbt
 Run linter with autoformat 
 
 ```
-$ sbt "ktlint src/**/*.kt !src/**/*Test.kt"
+$ sbt "ktlint -F src/**/*.kt !src/**/*Test.kt"
 ```
 
 License
