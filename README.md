@@ -25,13 +25,16 @@ If you don't add these values yourself the plugin will use the ones defined in [
 
 This plugin is used in the exact same way you'd use ktlint directly. If you want to know more about all the tool options you can visit [the official documentation](https://github.com/shyiko/ktlint#usage) 
 
+Run linter
 ```
 $ sbt
 > ktlint "src/**/*.kt" "!src/**/*Test.kt"
+```
 
-or 
+Run linter with autoformat 
 
-$ sbt "ktlint src/**/*.kt !src/**/*Test.kt"
+```
+$ sbt "ktlint -F src/**/*.kt !src/**/*Test.kt"
 ```
 
 License
